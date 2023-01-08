@@ -12,7 +12,7 @@ function createWindow() {
       nodeIntegration: true,
     },
   });
-  mainWindow.loadFile("main.html");
+  mainWindow.loadFile("index.html");
   mainWindow.on("closed", function () {
     mainWindow = null;
   });
@@ -20,12 +20,18 @@ function createWindow() {
 
 app.on("ready", createWindow);
 
+app.on("window-all-closed", function () {
+  if (process.platform !== "darwin") app.quit();
+});
+
 app.on("activate", function () {
   if (mainWindow === null) createWindow();
 });
 
 function getSpeeds() {
   speedTest.visual({ maxTime: 5000 }, function (data) {
+    document.getElementById("download-speed").innerHTML = data.speeds.download;
+    document.getElementById("upload-speed").innerHTML = data.speeds.upload;
   });
 }
 
