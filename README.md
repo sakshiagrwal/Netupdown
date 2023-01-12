@@ -15,4 +15,4 @@ Once the dependencies are installed, you can start the app by running the follow
 electron .
 ```
 
-This will start the app and display the Internet speeds in the window.
+This will start the app and display the Internet speeds in the window. try whatthediff bot
